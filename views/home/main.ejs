@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sang Developer</title>
+</head>
+
+<body>
+    <h1>Đây là trang chủ</h1>
+</body>
+<script>
+    // expires=UTCstring - life time of this cookie is x seconds
+    // max-age=3 - life time is 3 seconds
+    // path=/abc - visualiable after /abc
+    // domain=.sangne.com - can see as all subdomain end with .sangne.com
+    // secure thì https mới tự động gửi cookie vào header còn không thì sẽ không gửi, localhost có gửi 
+
+    console.log(document.cookie);
+    document.cookie = 'developer=Sangne; max-age=1';
+    console.log(document.cookie);
+    setTimeout(() => {
+        console.log('after 4s', document.cookie);
+    }, 5000);
+
+    // const date = new Date();
+    // console.log(date);
+    // date.setTime(Date.now() + 5000);
+    // console.log(date);
+    // document.cookie = `email=sangnguyen.030202@gmail.com; expires=${date.toUTCString()}`;
+
+</script>
+
+</html>
