@@ -18,13 +18,17 @@ app.get('/user', (req, res) => {
         const user = db.users.find(item => item.id = userId);
         if (!user) res.redirect('/login');
         else {
-            res.render('home/userPage', { cookie: 'sang' })
+            res.render('home/userPage', { cookie: 'sang' });
         }
     }
 });
 
 app.get('/login', (req, res) => {
-    res.render('home/login')
+    res.render('home/login');
+});
+
+app.get('/logout', (req, res) => {
+    res.setHeader('Set-Cookie', 'sessionId=; max-age=0').res.redirect('home/login');
 });
 
 // Fake db 
@@ -36,6 +40,7 @@ const db = {
     }],
 }
 
+// Mất khi reset chương trình, nên lưu ra file hay (redis, memcache => vẫn ram => sync xuống ổ cứng), database, etc.
 let sessions = {};
 
 app.post('/login', (req, res) => {
